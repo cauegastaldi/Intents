@@ -1,6 +1,7 @@
 package br.edu.scl.ifsp.ads.intents
 
 import android.content.Intent
+import android.content.Intent.ACTION_VIEW
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import br.edu.scl.ifsp.ads.intents.databinding.ActivityMainBinding
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
@@ -63,8 +65,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.viewMi -> {
-                val url: Uri = Uri.parse(amb.parametroTv.toString())
-                val navegadorIntent: Intent = Intent(Intent.ACTION_VIEW, url)
+                val url: Uri = Uri.parse(amb.parametroTv.text.toString())
+                val navegadorIntent = Intent(ACTION_VIEW, url)
                 startActivity(navegadorIntent)
                 true
             }
